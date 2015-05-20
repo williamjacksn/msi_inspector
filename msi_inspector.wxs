@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="801D236B-41F0-455D-879E-9E10A772108A"
+             Name="MSI Inspector"
+             Manufacturer="William Jackson"
+             UpgradeCode="7FFA870C-CF59-4AB4-AE48-363A7EA6D4F5"
+             Language="1033"
+             Codepage="1252"
+             Version="1.0.0">
+        <Package Id="*"
+                 Keywords="Installer"
+                 Description="Installer for MSI Inspector 1.0.0"
+                 Comments="MSI Inspector 1.0.0 by William Jackson"
+                 Manufacturer="William Jackson"
+                 InstallerVersion="100"
+                 Languages="1033"
+                 Compressed="yes"
+                 SummaryCodepage="1252" />
+        <Media Id="1" Cabinet="msi_inspector.cab" EmbedCab="yes" />
+
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="APPLICATIONROOTDIRECTORY" Name="MSI Inspector" />
+            </Directory>
+        </Directory>
+
+        <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+            <Component Id="msi_inspector" Guid="8A4BCB26-CD85-4F0A-A7E7-F188271F0C21">
+                <File Id="msi_inspector.vbs" Source="msi_inspector.vbs" KeyPath="yes" />
+                <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\Msi.Package\shell\Inspect">
+                    <RegistryValue Type="string" Value="Inspect" />
+                    <RegistryKey Key="command">
+                        <RegistryValue Type="string" Value='cscript.exe //nologo "[#msi_inspector.vbs]" "%1"' />
+                    </RegistryKey>
+                </RegistryKey>
+            </Component>
+        </DirectoryRef>
+
+        <Feature Id="MainApplication" Title="Main Application" Level="1">
+            <ComponentRef Id="msi_inspector" />
+        </Feature>
+    </Product>
+</Wix>
