@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-    <Product Id="801D236B-41F0-455D-879E-9E10A772108A"
+    <Product Id="5468F7A6-2EF4-4B3B-844D-3E7934C982E8"
              Name="MSI Inspector"
              Manufacturer="William Jackson"
              UpgradeCode="7FFA870C-CF59-4AB4-AE48-363A7EA6D4F5"
              Language="1033"
              Codepage="1252"
-             Version="1.0.0">
+             Version="1.0.1">
         <Package Id="*"
                  Keywords="Installer"
-                 Description="Installer for MSI Inspector 1.0.0"
-                 Comments="MSI Inspector 1.0.0 by William Jackson"
+                 Description="Installer for MSI Inspector 1.0.1"
+                 Comments="MSI Inspector 1.0.1 by William Jackson"
                  Manufacturer="William Jackson"
                  InstallerVersion="100"
                  Languages="1033"
                  Compressed="yes"
                  SummaryCodepage="1252" />
         <Media Id="1" Cabinet="msi_inspector.cab" EmbedCab="yes" />
+        <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
 
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder">
